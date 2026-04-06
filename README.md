@@ -8,8 +8,8 @@
 
 A continuación se muestra las capturas de pantalla con el resultado de ejecutar el fichero `algebra_vectores.py` con la opción verbosa (`-v`):
 
-![Captura 1](test1.png)
-![Captura 2](test2.png)
+![Captura 1](test2.png)
+![Captura 2](test1.png)
 
 ---
 
