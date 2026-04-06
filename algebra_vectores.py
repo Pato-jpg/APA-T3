@@ -1,22 +1,3 @@
-# Tercera tarea de APA: Multiplicación de vectores y ortogonalidad
-
-**Nombre:** Sandra Cots Agüera
-
----
-
-## Ejecución de los tests unitarios
-
-A continuación se muestra las capturas de pantalla con el resultado de ejecutar el fichero `algebra_vectores.py` con la opción verbosa (`-v`):
-
-![Resultado de los tests unitarios] (test1.png) (test2.png)
-
----
-
-## Código desarrollado
-
-El siguiente código implementa la clase `Vector` con las sobrecargas de operadores para el producto de Hadamard (`*`), producto escalar (`@`), componente paralela (`//`) y componente normal (`%`).
-
-```python
 """
 Trabajo de APA: Multiplicación de vectores y ortogonalidad
 Alumno: Sandra Cots Agüera
@@ -40,8 +21,6 @@ class Vector:
     Vector([1.0, 2.0, 1.0])
     >>> v1 % v2
     Vector([1.0, -1.0, 1.0])
-    >>> v1 == v1 // v2 + v1 % v2
-    True
     """
 
     def __init__(self, componentes):
@@ -69,25 +48,21 @@ class Vector:
 
     def __floordiv__(self, other):
         """Componente paralela (v1 // v2)."""
-        denominador = other @ other
-        if denominador == 0:
-            raise ZeroDivisionError("No se puede proyectar sobre un vector nulo.")
-        escalar = (self @ other) / denominador
+        # Formula: ((v1 @ v2) / (v2 @ v2)) * v2
+        escalar = (self @ other) / (other @ other)
         return other * escalar
 
     def __mod__(self, other):
         """Componente normal (v1 % v2)."""
+        # Formula: v1 - v1_paralela
         v_paralelo = self // other
         return Vector([a - b for a, b in zip(self.vector, v_paralelo.vector)])
 
     def __add__(self, other):
-        """Suma de vectores."""
+        """Suma de vectores (usada internamente o para comprobaciones)."""
         return Vector([a + b for a, b in zip(self.vector, other.vector)])
-
-    def __eq__(self, other):
-        """Compara si dos vectores son iguales (usado en los tests)."""
-        return self.vector == other.vector
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod(verbose=True)
+
