@@ -8,7 +8,8 @@
 
 A continuación se muestra las capturas de pantalla con el resultado de ejecutar el fichero `algebra_vectores.py` con la opción verbosa (`-v`):
 
-![Resultado de los tests unitarios] (test1.png) (test2.png)
+![Resultado de los tests unitarios] (test1.png) 
+![Resultado de los tests unitarios] (test2.png) 
 
 ---
 
